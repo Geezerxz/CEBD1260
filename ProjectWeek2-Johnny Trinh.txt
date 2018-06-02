@@ -1,0 +1,24 @@
+#5) Apply Explaratory Data Analysis
+Done in a jupyter notebook, shared on GitHub.
+
+#6) Define and answer related business questions
+
+	a.Which stock could be considered to be economically cyclical?
+
+	Economic cyclicality here is defined as an industry that tends to move in the same direction as the economy. The resulting distribution of correlation seem to suggest that alot of the stocks have high correlation with GDP, which would suggest that a lot of them are economically cyclical. This is in line with economic theory, which posits that it is normal to think that a lot of the industries are economically cyclical.
+
+	b.What is the proportion of stocks that would be considered to not be economically cyclical?
+
+	There are 722 stocks with correlation that are below the absolute value of 0.25 (which is the cutoff value used for this analysis), out of 6412 stocks, implying a proportion of approximately 11%. This is important for investors as they may be looking to diversify their portfolio in order not to have all of their assets in economically cyclical stocks. This is more important for retired people who are looking for more stability than return, as they will be drawing from their assets for consumption purposes more often than a 20-year old that just started working and saving.
+
+	It should be noted that the current analysis relies solely on correlation as a determinant of economic cyclicality and may not be reflective of reality as some industries covered in this analysis. The low correlation can either imply that the stocks are defensive or growth industries. The very definition of a defensive stock is one that is non-cyclical whereas, growth industry stock implies that the demand over the period analyzed is so strong that it is largely unaffected by the stage of business cycle.
+
+	c.How many of the NASDAQ stocks managed to create enough value for investors and for the economy (I assume the required return is 8%)?
+
+	Out of the 2131 tickers that are included in the analysis over the 2014-2016 period, 73 of those tickers (companies) managed to create over 8% return on equity, and therefore managed to create enough value to justify investment in them.
+
+	It should be noted that the results have taken negative equity values in account, and made sure that both ROE and ROA are at least positive. To be able to understand those instances, more analysis is required.
+
+	d.How many of the S&P500 stocks would suggest high optimism on the part of investors with regards to the prospects surrounding the company?
+
+	I assume that looking at the fundamental "Price/Book" value helps understand the sentiment investors exhibit towards each companies, and that should the market price be greater than the accounting book value, it is reflective of the optimistic sentiment on the part of investors. Out of the 532 tickers involved in the analysis (while the S&P500 may group 500 stocks, the composition of it changes over time), 8 of those had an average "Price/Book" value below one over the covered period. This would imply that 524 of the stocks exhibit high level of confidence on the part of investors with regards to their future prospects.
