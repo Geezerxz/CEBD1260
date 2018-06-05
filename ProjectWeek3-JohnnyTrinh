@@ -12,7 +12,7 @@ a. How do you decide how to select the right number of lags, differencing, and m
 -Correlograms (ACF, PACF)
 -AIC/BIC
 
-b. Were the results from evaluation metrics in agreement with the methods used in a in selecting the best model?
+b. Were evaluation metrics in agreement with the methods above used in a in selecting the best model in terms of fit?
 
 -MAE
 -RMSE
