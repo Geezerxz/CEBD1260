@@ -1,0 +1,38 @@
+#8) Apply the necessary pre-processing steps, build a machine learning model and measure the results
+
+The data that I've used are a subset of the whole 7,000 sets of stocks data that I was initially using. Here I've decided to take two datasets: Cil and GE. 
+
+Cil has a relatively shorter time frame, whereas GE goes back quite far.
+
+So there are a few issues that may arise from time series analysis. I address the following problems:
+
+a. How do you decide how to select the right number of lags, differencing, and moving averages to use?
+
+-Augmented Dickey-Fuller Test
+-Correlograms (ACF, PACF)
+-AIC/BIC
+
+b. Were the results from evaluation metrics in agreement with the methods used in a in selecting the best model?
+
+-MAE
+-RMSE
+
+#9) Blog post to explain the results from a technical perspective
+
+The technical aspect of the work that was performed here is slightly heavier than what was seen in class, so I will not bother talking about what was covered in class. I would much rather focus on the technical aspect that I added.
+
+The nature of the analysis that I performed was a time series analysis. An important warning to anyone working with time series, is the aspect of unit roots. This concept is important because if the series has unit roots, than it is not stationary. This is important as it may lead you to a flawed conclusion with regards to your regression. Your regression could show high r-squared despite no correlation in your data.
+
+The augmented Dickey-Fuller test is meant to help test for the presence of unit roots. Given the size of the datasets, the ADF test offers the appropriate critical values. The way one should interpret those values is that if the ADF statistic is more negative than the critical values listed, then we are x% confident there are no unit roots. Now, Cil and GE stocks ADF statistic both suggest that there is a high likelihood that the series are not stationary. By taking the first difference (meaning today's value minus one period lag value), the ADF statistic shows that these series would be stationary. This tells us the d value that will be input in the ARIMA function.
+
+The correlograms can help us decide how many lags and moving averages we will be choosing for the models. For both Cil and GE, the correlograms suggest that the optimal number of lags and moving averages is 3 of each. 
+
+The models that are built are as suggested but in order to have a way to compare the models, I've decided to do the following combination of ARIMA:
+(lag,differencing,moving average)
+(p,d,q)=(3,1,3)
+(p,d,q)=(2,1,2)
+(p,d,q)=(4,1,4)
+
+I've decided to base myself on the Akaike Information Criterion as the basis for determining which model is most parsimonious. Parsimony implies that the model accomplishes good predictions with as few predictors as possible. If we were to base ourselves on the AIC values, then the model that would be chosen for forecasting purposes would be ARIMA(3,1,3) for both Cil and GE.
+
+Looking at the mean absolute error and root mean squared error, GE's ARIMA(3,1,3) seems to result in the least error, while for Cil, ARIMA(2,1,2) seems to accomplish this. This is most likely due to an issue regarding the micronumerosity of the dataset (meaning it is not big enough).
