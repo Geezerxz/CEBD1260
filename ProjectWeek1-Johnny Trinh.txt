@@ -1,0 +1,50 @@
+#1)Group
+
+I will be working on my own.
+
+#2)Description of datasets
+
+The initial dataset of interest is the "Huge Stock Market Dataset", which can be found at the following link:
+
+https://www.kaggle.com/borismarjanovic/price-volume-data-for-all-us-stocks-etfs
+
+The idea was to investigate the performance of traditional time series (i.e. Moving Average Convergence Divergence model) against the performance of a black-box model (i.e. Long Short Term Memory model).
+
+In addition, the analysis could be pushed further by investigating the fundamental values in the following datasets:
+
+https://www.kaggle.com/jerryhans/key-statistics-yahoo-finance-stocks-of-2003-2013
+
+https://www.kaggle.com/finintelligence/nasdaq-financial-fundamentals
+
+By looking at those datasets, I hope to deepen my understanding of the various aspects relating to the two approaches taken in the field of finance, namely:
+
+-Technical Analysis (per Wikipedia):
+	"An analysis methodology for forecasting the direction of prices through the study of past market data, primarily price and volume"
+-Fundamental Analysis (per Investopedia):
+	"A method of evaluating a security in an attempt to measure its intrinsic value, by examining related economic, financial, and other qualitative and quantitative factors"
+
+Without both sets of data, I cannot compare the two approaches (technical vs. fundamental). It should be noted that there are some flaws with regards to the datasets that will be used. For example, there are multiple N/As found in the Yahoo Finance Stocks dataset, and so far, the huge stock market dataset has outlier issues.
+
+I will also be using GDP data obtained from the US Bureau of Economic Analysis for the purpose of determining the economic cyclicality of the stocks. The dataset was obtained from the following link:
+
+https://www.bea.gov/national/index.htm#gdp
+
+#3)Functional map (opportunities and use cases)
+
+Investor (Buyer/Seller/Analyst)
+	Stock markets are a peculiar one in which, investors are both buyers and sellers. In addition, the analyst, which act as a third party here, engages in the same activity as the buyers and sellers, namely the buying/selling investment decision. This is assuming that the investor itself has the knowledge to conduct proper analysis. The opportunities and use cases are listed below.
+
+-Pricing: Overvalued (Short) vs. Undervalued (Long)
+	Given that forecasting techniques can be used to determine the price of stocks, an opportunity to make a profit from accurate pricing can result. This would relate to technical analysis.
+
+	Given stock valuation techniques work properly, an opportunity to make a profit where valuation is done through fundamental analysis. 
+
+	The idea is that selling an overvalued stock (and repurchase later at a lower price) or buy an undervalued stock (and hold onto until it reaches a higher value). 
+
+-Trends: Market trends (Prices and Volume)
+	Depending on the industry, some may be resistant to economic downturns while others are highly correlated with them. This speaks to their economic cyclicality, which is important given that economies are subject to business cycles. By being able to classify them, investors and analysts alike can better understand the risk they are taking when buying their stocks.
+
+	The volume is a good indicator of activity and liquidity for a stock and can help assess how volatile the price of a stock may be. Liquidity and volatility could be compared in order to have a better understanding of the relationship they may potentially have. 
+
+#4)Repository on GitHub (Done)
+https://github.com/Geezerxz/CEBD1260
