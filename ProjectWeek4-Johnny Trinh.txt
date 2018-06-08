@@ -1,0 +1,47 @@
+#11)Perform a cluster analysis
+
+Problem description
+
+While it may not always be obvious where investors should put their money, volatility is important as it basically serve as risk metric. Given that we are not certain how we would classify our investment problem, how would we classify them? 
+
+Clustering can help, but the issue at hand would be how many clusters should be created to minimize the sum of squared errors observed in our analysis, while avoiding an issue where there are too many classes?
+
+Discussion
+
+The idea here was to use the results from inertia in order to find out the number of clusters we would like to create. As it turns out, following the principles that I have set to determine optimal k, the number of clusters believed to be optimal is 15.
+
+First, of all, everything that was done in class was replicated. Notice that the normalization, however, had to be done differently because it would have yielded no difference in the distribution of the variables. This is due to the nature of stocks, and how the distribution has some mass in its tails, with some extreme outliers. The normalization process was done through logarithmic transformation.
+
+Then, looking at the distances, what we obtain is (using k=4):
+
+Inter Cluster distance 1.4256018853476509
+Intra Cluster distance 1.009585721946302
+Inertia 27429.01353961175
+
+Running the code to calculate inertia for k between 2 and 100, I obtain an array of inertia values. Using the average change in sum of squared errors by additional cluster, I've determined that the optimal number of cluster was 15.
+
+#12)Write a blog post about a technical challenge
+
+Technical challenge: Determining a suitable number of k
+
+There are no specific guidelines as to what the optimal number of k is. However, it may be ideal to posit some hypothesis as to what constitutes an optimal number of k.
+
+I initially intended to resort to differentiation. What I mean by this is that I would attempt to model the inertia curve in order to differentiate it and solve for 0. The problem is that the curve suiting the most the inertia curve is that of the following function: 
+
+y=f(x)=a*(1/(b*x+h))+k
+
+Now, it should be taken into consideration that given that the graph does not seem to require the asymptotic vertical axis to be anything other than x=0, and therefore, h=0. If h=0, then it would imply that I can simply take a/b as one parameter, say, c. This is actually how I have estimated the model:
+
+y=f(x)=c*(1/x)+k
+
+For the purpose of this problem, we set the range of x as x>0. This implies that the range of y goes from infinity to 0, as x increases, y converges towards 0, without ever touching it (theoretically). This implies that I cannot solve for any minima/maxima given that the functions is monotonically decreasing. However, I realized that the idea of the tradeoff between an additional k and the reduction of sum squared errors could be used to determine optimality in this situation. More specifically, I would be using the average decrease in sum of squared errors as a benchmark, and define k as optimal when the addition of one more cluster would result in a reduction by less than the average reduction. The change in reductions in the sum squared errors were calculated as the difference between the inertia values for k and k-1. This average reduction was calculated as 426.54, which is an inertia value that would be obtained by interpolating the inertia values for k=15 and k=16. So I chose k=15. 
+
+The results are that the intercluster distance is higher, while the intracluster distance is lower (using k=15). 
+
+Inter Cluster distance 2.109722093831817
+Intra Cluster distance 0.5609330646619035
+Inertia 10473.409663635477
+
+I believe that the intercluster distance increasing suggest that the cluster are better defined, as the distance clearly delineates each data point, whereas, a diminishing intracluster distance would suggest that the clusters are much more concentrated. While it would be possible for us to compute in a loop the distances over the k=[2,100], I believe that it would be quite computationally taxing and therefore opted against the very idea of doing so. 
+
+While this is not related to the technical challenge I'm addressing, it should also be noted that one other arise when using such a large number of cluster, and that is that it becomes harder to interpret the differences between the clusters when looking at the graphs.
